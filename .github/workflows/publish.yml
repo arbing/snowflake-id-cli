@@ -1,18 +1,20 @@
-name: Publish
+name: Publish to npm
 
 on:
-  push:
-    tags:
-      - v*
   workflow_dispatch:
-
-permissions:
-  contents: read
-  id-token: write
+    inputs:
+      npm-tag:
+        description: npm distribution tag
+        required: true
+        default: latest
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,12 +25,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          registry-url: https://registry.npmjs.org
+          node-version: 24
           cache: pnpm
+          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Upgrade npm
+        run: npm install --global npm@latest
 
       - name: Lint
         run: pnpm lint
@@ -42,5 +47,5 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Publish to npm
-        run: npm publish --provenance --access public
+      - name: Publish
+        run: npm publish --access public --tag "${{ inputs.npm-tag }}"
