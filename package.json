@@ -39,6 +39,9 @@
     "url": "https://github.com/arbing/snowflake-id-cli/issues"
   },
   "homepage": "https://github.com/arbing/snowflake-id-cli#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=20"
   },
