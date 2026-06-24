@@ -9,7 +9,7 @@ Generate and parse Snowflake IDs from the command line. The package is designed 
 - Generate one or many Snowflake IDs.
 - Parse IDs into timestamp, ISO date, datacenter ID, worker ID, and sequence.
 - Uses `bigint` internally so 64-bit IDs are not truncated.
-- Supports table, JSON, and NDJSON output.
+- Supports plain, table, JSON, and NDJSON output.
 - Reads IDs from arguments, files, or stdin.
 - Clear help text and non-zero exit codes for invalid input.
 
@@ -64,7 +64,7 @@ Options:
   --epoch <ms>              custom epoch in milliseconds
   --datacenter-id <id>      datacenter ID from 0 to 31
   --worker-id <id>          worker ID from 0 to 31
-  -f, --format <format>     output format: table, json, or ndjson
+  -f, --format <format>     output format: plain, table, json, or ndjson
   --json                    shortcut for --format json
 ```
 
@@ -76,7 +76,7 @@ Usage: snowflake-id parse [options] [ids...]
 Options:
   -i, --input <path>        read whitespace-separated IDs from a file
   --epoch <ms>              custom epoch in milliseconds
-  -f, --format <format>     output format: table, json, or ndjson
+  -f, --format <format>     output format: plain, table, json, or ndjson
   --json                    shortcut for --format json
 ```
 

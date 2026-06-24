@@ -20,6 +20,22 @@ describe('CLI', () => {
     expect(output).toContain('parse');
   });
 
+  it('generates plain IDs by default', () => {
+    const output = runCli(['generate', '--count', '2']);
+    const ids = output.trim().split('\n');
+
+    expect(ids).toHaveLength(2);
+    expect(ids[0]).toMatch(/^\d+$/);
+    expect(ids[1]).toMatch(/^\d+$/);
+  });
+
+  it('parses plain IDs by default', () => {
+    const generated = JSON.parse(runCli(['generate', '--json'])) as Array<{ id: string }>;
+    const output = runCli(['parse', generated[0]!.id]);
+
+    expect(output.trim()).toBe(generated[0]!.id);
+  });
+
   it('generates JSON output', () => {
     const output = runCli(['generate', '--count', '2', '--datacenter-id', '1', '--worker-id', '2', '--json']);
     const records = JSON.parse(output) as Array<{ id: string; datacenterId: number; workerId: number }>;
