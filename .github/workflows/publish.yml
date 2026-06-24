@@ -1,6 +1,9 @@
 name: Publish to npm
 
 on:
+  push:
+    tags:
+      - v*
   workflow_dispatch:
     inputs:
       npm-tag:
@@ -48,4 +51,6 @@ jobs:
         run: pnpm build
 
       - name: Publish
-        run: npm publish --access public --tag "${{ inputs.npm-tag }}"
+        env:
+          NPM_TAG: ${{ inputs.npm-tag }}
+        run: npm publish --access public --tag "${NPM_TAG:-latest}"

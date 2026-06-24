@@ -1,6 +1,6 @@
 {
   "name": "snowflake-id-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate and parse Snowflake IDs from the command line.",
   "type": "module",
   "bin": {
