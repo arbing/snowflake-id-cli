@@ -9,7 +9,7 @@
 - 生成单个或批量 Snowflake ID。
 - 解析 ID 得到 timestamp、ISO date、datacenter ID、worker ID 和 sequence。
 - 内部使用 `bigint`，避免 64-bit ID 被截断。
-- 支持 table、JSON 和 NDJSON 输出。
+- 支持 plain、table、JSON 和 NDJSON 输出。
 - 支持从参数、文件或 stdin 读取 ID。
 - 参数帮助清晰，非法输入会返回非 0 退出码。
 
@@ -64,7 +64,7 @@ Options:
   --epoch <ms>              custom epoch in milliseconds
   --datacenter-id <id>      datacenter ID from 0 to 31
   --worker-id <id>          worker ID from 0 to 31
-  -f, --format <format>     output format: table, json, or ndjson
+  -f, --format <format>     output format: plain, table, json, or ndjson
   --json                    shortcut for --format json
 ```
 
@@ -76,7 +76,7 @@ Usage: snowflake-id parse [options] [ids...]
 Options:
   -i, --input <path>        read whitespace-separated IDs from a file
   --epoch <ms>              custom epoch in milliseconds
-  -f, --format <format>     output format: table, json, or ndjson
+  -f, --format <format>     output format: plain, table, json, or ndjson
   --json                    shortcut for --format json
 ```
 

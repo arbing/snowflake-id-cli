@@ -41,7 +41,7 @@ program
   .option('--epoch <ms>', 'custom epoch in milliseconds', DEFAULT_EPOCH.toString())
   .option('--datacenter-id <id>', 'datacenter ID from 0 to 31', DEFAULT_DATACENTER_ID.toString())
   .option('--worker-id <id>', 'worker ID from 0 to 31', DEFAULT_WORKER_ID.toString())
-  .option('-f, --format <format>', 'output format: table, json, or ndjson', parseFormat, 'table')
+  .option('-f, --format <format>', 'output format: plain, table, json, or ndjson', parseFormat, 'plain')
   .option('--json', 'shortcut for --format json')
   .action((options: GenerateCliOptions) => {
     run(() => {
@@ -62,7 +62,7 @@ program
   .argument('[ids...]', 'IDs to parse. Reads whitespace-separated IDs from stdin when omitted.')
   .option('-i, --input <path>', 'read whitespace-separated IDs from a file')
   .option('--epoch <ms>', 'custom epoch in milliseconds', DEFAULT_EPOCH.toString())
-  .option('-f, --format <format>', 'output format: table, json, or ndjson', parseFormat, 'table')
+  .option('-f, --format <format>', 'output format: plain, table, json, or ndjson', parseFormat, 'plain')
   .option('--json', 'shortcut for --format json')
   .action((ids: string[], options: ParseCliOptions) => {
     run(() => {
@@ -108,10 +108,10 @@ function parsePositiveInteger(value: string): number {
 }
 
 function parseFormat(value: string): OutputFormat {
-  if (value === 'table' || value === 'json' || value === 'ndjson') {
+  if (value === 'plain' || value === 'table' || value === 'json' || value === 'ndjson') {
     return value;
   }
-  throw new InvalidArgumentError('must be table, json, or ndjson');
+  throw new InvalidArgumentError('must be plain, table, json, or ndjson');
 }
 
 function resolveFormat(options: CommonCliOptions): OutputFormat {

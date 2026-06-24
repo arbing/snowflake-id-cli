@@ -1,9 +1,11 @@
 import type { ParsedSnowflakeId } from './snowflake.js';
 
-export type OutputFormat = 'table' | 'json' | 'ndjson';
+export type OutputFormat = 'plain' | 'table' | 'json' | 'ndjson';
 
 export function formatRecords(records: ParsedSnowflakeId[], format: OutputFormat): string {
   switch (format) {
+    case 'plain':
+      return records.map((record) => record.id).join('\n');
     case 'json':
       return JSON.stringify(records, null, 2);
     case 'ndjson':
