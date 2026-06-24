@@ -1,0 +1,59 @@
+{
+  "name": "snowflake-id-cli",
+  "version": "0.1.0",
+  "description": "Generate and parse Snowflake IDs from the command line.",
+  "type": "module",
+  "bin": {
+    "snowflake-id": "./dist/cli.js",
+    "snowflake-id-cli": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "prepublishOnly": "pnpm build && pnpm test"
+  },
+  "keywords": [
+    "snowflake",
+    "id",
+    "cli",
+    "generator",
+    "parser",
+    "bigint"
+  ],
+  "author": "arbing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arbing/snowflake-id-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arbing/snowflake-id-cli/issues"
+  },
+  "homepage": "https://github.com/arbing/snowflake-id-cli#readme",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "commander": "^14.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^25.0.2",
+    "eslint": "^9.39.2",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.49.0",
+    "vitest": "^4.0.15"
+  },
+  "packageManager": "pnpm@10.34.1"
+}
