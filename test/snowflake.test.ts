@@ -3,10 +3,10 @@ import { generateSnowflakeIds, parseSnowflakeId, SnowflakeError, SnowflakeGenera
 
 describe('SnowflakeGenerator', () => {
   it('generates IDs that parse back to their parts', () => {
-    const generator = new SnowflakeGenerator({ epoch: 1_577_836_800_000, datacenterId: 3, workerId: 7 });
+    const generator = new SnowflakeGenerator({ epoch: 1_288_834_974_657, datacenterId: 3, workerId: 7 });
     const id = generator.nextId(1_700_000_000_000);
 
-    expect(parseSnowflakeId(id, { epoch: 1_577_836_800_000 })).toMatchObject({
+    expect(parseSnowflakeId(id, { epoch: 1_288_834_974_657 })).toMatchObject({
       id,
       timestamp: 1_700_000_000_000,
       datacenterId: 3,
