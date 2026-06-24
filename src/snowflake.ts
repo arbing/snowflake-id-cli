@@ -1,4 +1,4 @@
-export const DEFAULT_EPOCH = 1_577_836_800_000n;
+export const DEFAULT_EPOCH = 1_288_834_974_657n;
 export const DEFAULT_DATACENTER_ID = 0n;
 export const DEFAULT_WORKER_ID = 0n;
 
